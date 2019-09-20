@@ -8,9 +8,19 @@ class Timer extends Component {
   }
 
   // add your code here
+  timerHandle = null
 
+  addSecondToTimer = () => {
+    this.setState({time: this.state.time + 1})
+  }
 
-
+  componentDidMount() {
+    this.timerHandle = setInterval(this.addSecondToTimer, 1000);
+  }
+  
+  componentWillUnmount() {
+    clearInterval(this.timerHandle)
+  }
 
 
 
